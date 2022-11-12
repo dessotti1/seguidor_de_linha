@@ -80,12 +80,11 @@ class Velocidade:
         elif (extEsq == 1 and esq == 1 and center == 0 and dir == 0 and extDir == 1):
             self.linear = 0.1
 
-        
         elif (extEsq == 1 and esq == 0 and center == 0 and dir == 1 and extDir == 1):
             self.linear = 0.1
 
         elif (extEsq == 1 and esq == 0 and center == 0 and dir == 0 and extDir == 1):
-            self.linear = 0.05
+            self.linear = 0.1
         
 
     def timerCallback(self, event):
