@@ -1,2 +1,2 @@
 # simple_description
- Seguidor de linha com ROS e Gazebo
+ Seguidor de Linha com ROS e Gazebo

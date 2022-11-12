@@ -1,0 +1,35 @@
+<launch>
+  <arg name="world" default="pista2x" />
+  <param name="robot_description" command="$(find xacro)/xacro $(find simple_description)/urdf/simple.xacro"/>
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model urdf_simple"/>
+  
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find pista)/worlds/$(arg world).world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 base_link base_footprint 40" />
+
+  <!-- Open joint_state_publisher with GUI for debugging -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+  <!-- Publish robot state (joints) as TF -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  
+  <!-- GUI plugin for steering a robot using Twist messages -->
+  <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+    <param name="default_topic" value="cmd_vel"/>
+  </node>
+
+  <!-- Visualization - RViz-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find simple_description)/rviz/rviz.rviz" output="screen" />
+
+</launch>

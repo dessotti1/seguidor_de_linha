@@ -1,0 +1,355 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="sensor" params="x y z parent">
+  <!-- Joint -->
+  <joint name="sensor_joint_center" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="${x} 0 ${z}" rpy="0 1.57079632679 0" />
+    <parent link="${parent}" />
+    <child link="sensor_link_center" />
+  </joint>
+
+  <!-- Link -->
+  <link name="sensor_link_center">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link> 
+
+
+  <gazebo reference="sensor_link_center">
+    <material>Gazebo/Red</material>
+    <sensor type="camera" name="camera_center">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>0.8</horizontal_fov>
+        <image>
+          <width>20</width>
+          <height>20</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>sensor/camera_center</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>sensor_link_center</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+
+  <!-- /////////////////////////////////////////////////////////////////////////////// -->
+  <!-- Joint -->
+  <joint name="sensor_joint_left" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="${x} ${y} ${z}" rpy="0 1.57079632679 0" />
+    <parent link="${parent}" />
+    <child link="sensor_link_left" />
+  </joint>
+
+  <!-- Link -->
+  <link name="sensor_link_left">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link> 
+
+
+  <gazebo reference="sensor_link_left">
+    <material>Gazebo/Red</material>
+    <sensor type="camera" name="camera_left">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>0.8</horizontal_fov>
+        <image>
+          <width>20</width>
+          <height>20</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>sensor/camera_left</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>sensor_link_left</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- /////////////////////////////////////////////////////////////////////////////// -->
+  <!-- Joint -->
+  <joint name="sensor_joint_right" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="${x} -${y} ${z}" rpy="0 1.57079632679 0" />
+    <parent link="${parent}" />
+    <child link="sensor_link_right" />
+  </joint>
+
+  <!-- Link -->
+  <link name="sensor_link_right">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link> 
+
+
+  <gazebo reference="sensor_link_right">
+    <material>Gazebo/Red</material>
+    <sensor type="camera" name="camera_right">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>0.8</horizontal_fov>
+        <image>
+          <width>20</width>
+          <height>20</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>sensor/camera_right</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>sensor_link_right</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- /////////////////////////////////////////////////////////////////////////////// -->
+  <!-- Joint -->
+  <joint name="sensor_joint_full_left" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="${x} ${2*y} ${z}" rpy="0 1.57079632679 0" />
+    <parent link="${parent}" />
+    <child link="sensor_link_full_left" />
+  </joint>
+
+  <!-- Link -->
+  <link name="sensor_link_full_left">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link> 
+
+
+  <gazebo reference="sensor_link_full_left">
+    <material>Gazebo/Red</material>
+    <sensor type="camera" name="camera_full_left">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>0.8</horizontal_fov>
+        <image>
+          <width>20</width>
+          <height>20</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>sensor/camera_full_left</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>sensor_link_full_left</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- /////////////////////////////////////////////////////////////////////////////// -->
+  <!-- Joint -->
+  <joint name="sensor_joint_full_right" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="${x} ${-2*y} ${z}" rpy="0 1.57079632679 0" />
+    <parent link="${parent}" />
+    <child link="sensor_link_full_right" />
+  </joint>
+
+  <!-- Link -->
+  <link name="sensor_link_full_right">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link> 
+
+
+  <gazebo reference="sensor_link_full_right">
+    <material>Gazebo/Red</material>
+    <sensor type="camera" name="camera_full_right">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>0.8</horizontal_fov>
+        <image>
+          <width>20</width>
+          <height>20</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>sensor/camera_full_right</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>sensor_link_full_right</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+  </xacro:macro>
+
+</robot>

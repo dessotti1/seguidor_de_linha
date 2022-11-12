@@ -1,0 +1,250 @@
+<?xml version="1.0" ?>
+<robot name="simple" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find simple_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find simple_description)/urdf/simple.trans" />
+<xacro:include filename="$(find simple_description)/urdf/simple.gazebo" />
+<xacro:include filename="$(find simple_description)/urdf/sensor.xacro" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.03919375584100265 6.514194882791157e-07 0.032819727449941855" rpy="0 0 0"/>
+    <mass value="0.8698237070518965"/>
+    <inertia ixx="0.00118" iyy="0.003549" izz="0.004715" ixy="-0.0" iyz="0.0" ixz="1.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="shaft1_1">
+  <inertial>
+    <origin xyz="-1.6844164951734797e-15 -0.009999999999993042 0.0" rpy="0 0 0"/>
+    <mass value="0.15542999999999998"/>
+    <inertia ixx="1.1e-05" iyy="3.2e-05" izz="3.1e-05" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.005 0.0515 -0.05045" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/shaft1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.005 0.0515 -0.05045" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/shaft1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="whell1_1">
+  <inertial>
+    <origin xyz="-1.6922227508153753e-15 -0.004367469894646314 1.3877787807814457e-17" rpy="0 0 0"/>
+    <mass value="0.25586308761788984"/>
+    <inertia ixx="8.7e-05" iyy="0.000171" izz="8.7e-05" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.005 0.0715 -0.05045" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/whell1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.005 0.0715 -0.05045" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/whell1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="shaft2_1">
+  <inertial>
+    <origin xyz="-1.6662018986757232e-15 0.010000000000007038 0.0" rpy="0 0 0"/>
+    <mass value="0.15542999999999998"/>
+    <inertia ixx="1.1e-05" iyy="3.2e-05" izz="3.1e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.005 -0.0515 -0.05045" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/shaft2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.005 -0.0515 -0.05045" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/shaft2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="whell2_1">
+  <inertial>
+    <origin xyz="-1.6740081543176188e-15 0.004367469894660317 -1.3877787807814457e-17" rpy="0 0 0"/>
+    <mass value="0.25586308761788984"/>
+    <inertia ixx="8.7e-05" iyy="0.000171" izz="8.7e-05" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.005 -0.0715 -0.05045" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/whell2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.005 -0.0715 -0.05045" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/whell2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="sensor_1">
+  <inertial>
+    <origin xyz="0.004049697262418467 0.03697462579723577 0.0015000000000000013" rpy="0 0 0"/>
+    <mass value="0.047638523944063704"/>
+    <inertia ixx="6.5e-05" iyy="1e-06" izz="6.6e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.184 0.037 -0.035" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/sensor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.184 0.037 -0.035" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/sensor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roda2_1">
+  <inertial>
+    <origin xyz="6.387668172180838e-13 -0.0009999999999930256 0.0" rpy="0 0 0"/>
+    <mass value="0.0017756281678090364"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.1725 -0.0 -0.0215" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/roda2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.1725 -0.0 -0.0215" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/roda2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="roda1_1">
+  <inertial>
+    <origin xyz="1.1379786002407855e-14 0.00713725588241533 -0.0019083196916651335" rpy="0 0 0"/>
+    <mass value="0.0037399690122014873"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.1725 0.00675 -0.03" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/roda1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.1725 0.00675 -0.03" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://simple_description/meshes/roda1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rigid1" type="fixed">
+  <origin xyz="-0.005 -0.0515 0.05045" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="shaft1_1"/>
+</joint>
+
+<joint name="Rev2" type="continuous">
+  <origin xyz="0.0 -0.02 0.0" rpy="0 0 0"/>
+  <parent link="shaft1_1"/>
+  <child link="whell1_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rigid3" type="fixed">
+  <origin xyz="-0.005 0.0515 0.05045" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="shaft2_1"/>
+</joint>
+
+<joint name="Rev4" type="continuous">
+  <origin xyz="0.0 0.02 0.0" rpy="0 0 0"/>
+  <parent link="shaft2_1"/>
+  <child link="whell2_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rigid5" type="fixed">
+  <origin xyz="0.184 -0.037 0.035" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="sensor_1"/>
+</joint>
+
+<joint name="Rev7" type="continuous">
+  <origin xyz="0.0 0.00675 -0.0085" rpy="0 0 0"/>
+  <parent link="roda1_1"/>
+  <child link="roda2_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="Rev8" type="continuous">
+  <origin xyz="0.1725 -0.00675 0.03" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="roda1_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+<gazebo>
+  <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
+    <rosDebugLevel>na</rosDebugLevel>
+    <legacyMode>false</legacyMode>
+    <alwaysOn>true</alwaysOn>
+    <updateRate>20</updateRate>
+    <leftJoint>Rev4</leftJoint>
+    <publishWheelTF>false</publishWheelTF>
+    <rightJoint>Rev2</rightJoint>
+    <wheelSeparation>0.3</wheelSeparation>
+    <publishWheelJointState>false</publishWheelJointState>
+    <wheelDiameter>0.2</wheelDiameter>
+    <wheelAcceleration>0</wheelAcceleration>
+    <wheelTorque>5</wheelTorque>
+    <odometrySource>1</odometrySource>
+    <torque>0.1</torque>
+    <commandTopic>cmd_vel</commandTopic>
+    <odometryTopic>odom</odometryTopic>
+    <publishOdomTF>true</publishOdomTF>
+    <publishTf>1</publishTf>
+    <odometryFrame>odom</odometryFrame>
+    <robotBaseFrame>base_link</robotBaseFrame>
+  </plugin>
+</gazebo>
+
+<!-- Sensor LF -->
+<xacro:sensor x="0.195" y="0.03" z="0.04" parent="base_link"/>
+
+</robot>
